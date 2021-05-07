@@ -14,7 +14,7 @@
 		</p>
 	@endif
 	<div class="container" style="width: 40%; border-radius: 10px; box-shadow: 1px 3px 5px gray; padding: 10px; margin-top: 30px;">
-		<form method="POST" action="/tasklaravel/public/demo/login">
+		<form method="POST" action="/demolaravel/public/demo/login">
 			<h2>Login</h2>
 			@csrf
 		  <div class="form-group">

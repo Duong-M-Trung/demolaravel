@@ -14,9 +14,8 @@ class Task extends Migration
     public function up()
     {
         Schema::create('task', function (Blueprint $table) {
-            $table->increments('id')->autoIncrement();
+            $table->integer('id')->autoIncrement();
             $table->string('todo');
-            $table->string('user');
             $table->timestamps();
             $table->date('finishday');
         });
@@ -29,6 +28,6 @@ class Task extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('task');
     }
 }

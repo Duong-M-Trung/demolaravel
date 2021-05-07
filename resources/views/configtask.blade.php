@@ -8,16 +8,30 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
+	<div class="container" style="width: 50%; border: solid 1px black; margin-top: 20px; padding: 10px; border-radius: 5px;">
+		<form method="post" action="/demolaravel/public/addusertask">
+			<input type="hidden" name="_token" value="{{ csrf_token() }}">
+			<input type="hidden" name="idtask" value="{{ $id }}">
+			  <div class="form-group">
+			    <label for="exampleFormControlSelect2">Người làm</label>
+			    <select class="form-control" name="user">
+			    	@foreach($users as $items)
+			    	<option value="{{$items->id}}">
+			    		{{$items->name}}
+			    	</option>
+			    	@endforeach
+			    </select>
+			  </div>
+			  <button type="submit" name="btnSubmit" class="btn btn-primary">Add</button>
+		</form>
+	</div>
 	
 	<div class="container" style="width: 50%; border: solid 1px black; margin-top: 20px; padding: 10px; border-radius: 5px;">
 		<form method="post" action="../configtask">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			@foreach($task as $item)
 			<input type="hidden" name="id" value="{{$item->id}}">
-			<div class="form-group">
-			    <label for="exampleFormControlInput1">Người làm</label>
-			    <input type="text" required="true" class="form-control" name="user" value="{{$item->user}}">
-			  </div>
+			
 			  <div class="form-group">
 			    <label for="exampleFormControlSelect1">Việc cần làm</label>
 			     <input type="text" required="true" class="form-control" name ="todo" value="{{$item->todo}}">
@@ -27,8 +41,17 @@
 			    <input type="date" required="true" class="form-control" name="finishday"value="{{$item->finishday}}">
 			  </div>
 			@endforeach
-			  <button type="submit" name="btnSubmit" class="btn btn-primary">Submit</button>
+			  <button type="submit" name="btnSubmit" class="btn btn-primary">Update</button>
 		</form>
+	</div>
+	
+	<div>
+		<ul class="list-group">
+		  <li class="list-group-item active" aria-current="true">Người thực hiện</li>
+		  @foreach($taskdetail as $itemt)
+		  <li class="list-group-item">{{$itemt->username}}</li>
+		  @endforeach
+		</ul>
 	</div>
 
 

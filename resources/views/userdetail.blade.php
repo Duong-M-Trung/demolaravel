@@ -7,21 +7,14 @@
 	<link rel="stylesheet" type="text/css" href="">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
-<body>
-	
-	<div class="container" style="width: 50%; border: solid 1px black; margin-top: 20px; padding: 10px; border-radius: 5px;">
-		<form method="post" action="../addtolist">
-			<input type="hidden" name="_token" value="{{ csrf_token() }}">
-			  <div class="form-group">
-			    <label for="exampleFormControlSelect1">Việc cần làm</label>
-			     <input type="text" required="true" class="form-control" name = "todo">
-			  </div>
-			  <div class="form-group">
-			    <label for="exampleFormControlSelect2">Ngày hoàn thành</label>
-			    <input type="date" required="true" class="form-control" name="finishday">
-			  </div>
-			  <button type="submit" name="btnSubmit" class="btn btn-primary">Submit</button>
-		</form>
+<body>	
+	<div>
+		<ul class="list-group">
+		  <li class="list-group-item active" aria-current="true">Việc cần làm</li>
+		  @foreach($tasktodo as $itemt)
+		  <li class="list-group-item">{{$itemt->listtodo}}</li>
+		  @endforeach
+		</ul>
 	</div>
 
 

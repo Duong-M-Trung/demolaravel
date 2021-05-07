@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 /*Route::get('/demo', function() {
     return view('demo');
@@ -25,8 +25,11 @@ Route::get('demo/task/{id}', 'TaskController@gettoconfig');
 Route::get('demo/delete/{id}', 'TaskController@deletetask');
 Route::post('demo/configtask', 'TaskController@configtask');
 
+Route::get('/demo/viewadd', 'TaskController@getformtask');
+
 Route::post('addtolist', 'TaskController@addlist');
 
+Route::post('/addusertask', 'TaskController@addusertotask');
 /*Route::get('/demo/addtb', function(){
 	Schema::create('task', function ($table) {
 	    $table->increments('id')->autoIncrement();
@@ -38,9 +41,9 @@ Route::post('addtolist', 'TaskController@addlist');
 	echo "Complete";
 });*/
 
-Route::get('/demo/viewadd', function(){
-	return view('addlist');
-});
+// Route::get('/demo/viewadd', function(){
+// 	return view('addlist');
+// });
 
 Route::get('demo/formlogin', function() {
     return view('login');
@@ -60,3 +63,12 @@ Route::post('/demo/adduser', 'Auth\RegisterController@create');
 //         // Matches The "/admin/users" URL
 //     });
 // });
+
+Route::get('/demo/listuser', 'UserController@showlist');
+Route::get('/demo/user/{id}', 'UserController@showtasktodo');
+
+Route::group(['prefix' => 'api'], function () {
+    Route::resource('users', 'UserController');    
+});
+Route::view('/{any}', 'listuser')
+    ->where('any', '.*');

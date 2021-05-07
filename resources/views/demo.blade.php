@@ -17,6 +17,8 @@
 	  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 	    <div class="navbar-nav">
 	      <a href="../public/demo/viewadd" class="nav-item nav-link" class="btn btn-primary">Thêm task</a>
+	      <a href="../public/demo/listuser" class="nav-item nav-link" class="btn btn-primary">Danh sách user</a>
+	      <a href="../demo/viewadd" class="nav-item nav-link" class="btn btn-primary">Danh sách task</a>
 	      <a href="#" class="nav-item nav-link" class="btn btn-primary">{{$user->name}}</a>
 	      <a href="../public/demo/logout" class="nav-item nav-link" class="btn btn-primary">Đăng xuất</a>
 	    </div>
@@ -26,10 +28,9 @@
 	  @foreach($list as $item)
 	  	<a href="../public/demo/task/{{$item->id}}" class="list-group-item list-group-item-action flex-column align-items-start">
 		    <div class="d-flex w-100 justify-content-between">
-		      <h5 class="mb-1">{{ $item->user }}</h5>
+		      <h5 class="mb-1">{{$item->todo}}</h5>
 		      <small class="text-muted">Kết thúc: {{$item->finishday}}</small>
 		    </div>
-		    <p class="mb-1">{{$item->todo}}</p>
 		    <a style="width: 100px;" class="btn btn-danger" href="../public/demo/delete/{{$item->id}}">Xoá</a>
 	  	</a>
 	  @endforeach
